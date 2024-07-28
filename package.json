@@ -17,8 +17,12 @@
     "express": "^4.19.2",
     "node-fetch": "^3.3.2",
     "nuxt": "^3.12.4",
+<<<<<<< HEAD
     "vue": "^3.2.47",
     "vue-toastification": "^2.0.0-rc.5"
+=======
+    "vue": "^3.2.47"
+>>>>>>> d20a69a0be9a1ffaa986e9e2ba5291a776128798
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.2",
