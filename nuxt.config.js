@@ -1,5 +1,4 @@
-export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+export default defineNuxtConfig({
   head: {
     title: 'main-portfolio',
     htmlAttrs: {
@@ -16,7 +15,26 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ],
+
+  plugins: [
+    '~/plugins/vue-toastification.client.js',
+    '~/plugins/iconify.client.js'
+  ],
+
+  components: true,
+
+  modules: [
+    '@nuxtjs/tailwindcss'
+  ],
+
+  build: {
+    transpile: ['@fortawesome/vue-fontawesome', 'vue-toastification']
+  },
+
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -24,43 +42,5 @@ export default {
     },
   },
 
-  css: [
-    '~/assets/css/main.css',
-    '@fortawesome/fontawesome-svg-core/styles.css'
-    
-  ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/iconify.js'
-    // '~/plugins/fontawesome.js'
-  ],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // '@nuxt/http',
-    // '@nuxtjs/axios'
-  ],
-
-  // http: {
-  //   // Optional: Configure your HTTP options here
-  // },
-  // axios: {
-  //   baseURL: '/'
-  // },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
-
-  compatibilityDate: '2024-07-27'
-};
+  compatibilityDate: '2024-07-28',
+})
