@@ -9,6 +9,11 @@ export const useDiscord = () => {
   let intervalId = null
 
   const fetchDiscordStatus = async () => {
+    // Skip API calls during SSR/build time
+    if (process.server || typeof window === 'undefined') {
+      return
+    }
+    
     try {
       isLoading.value = true
       error.value = null
@@ -87,7 +92,10 @@ export const useDiscord = () => {
   }
 
   onMounted(() => {
-    startPolling()
+    // Only start polling on client-side
+    if (process.client) {
+      startPolling()
+    }
   })
 
   onUnmounted(() => {

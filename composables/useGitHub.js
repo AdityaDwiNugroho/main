@@ -17,6 +17,11 @@ export const useGitHub = (username = 'AdityaDwiNugroho') => {
   let intervalId = null
 
   const fetchGitHubActivity = async () => {
+    // Skip API calls during SSR/build time
+    if (process.server || typeof window === 'undefined') {
+      return
+    }
+    
     try {
       isLoading.value = true
       error.value = null
@@ -82,7 +87,10 @@ export const useGitHub = (username = 'AdityaDwiNugroho') => {
   }
 
   onMounted(() => {
-    startPolling()
+    // Only start polling on client-side
+    if (process.client) {
+      startPolling()
+    }
   })
 
   onUnmounted(() => {

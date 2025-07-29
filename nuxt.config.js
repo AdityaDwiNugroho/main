@@ -43,4 +43,29 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-28',
+  
+  // Nitro configuration for better build stability
+  nitro: {
+    experimental: {
+      wasm: true
+    },
+    // Skip API routes during static generation
+    prerender: {
+      crawlLinks: false,
+      ignore: ['/api/']
+    }
+  },
+  
+  // Runtime config for environment variables
+  runtimeConfig: {
+    // Private keys (only available on server-side)
+    githubToken: process.env.GITHUB_TOKEN || '',
+    discordBotToken: process.env.DISCORD_BOT_TOKEN || '',
+    discordUserId: process.env.DISCORD_USER_ID || '',
+    
+    // Public keys (exposed to client-side)
+    public: {
+      githubUsername: process.env.GITHUB_USERNAME || 'AdityaDwiNugroho'
+    }
+  }
 })
